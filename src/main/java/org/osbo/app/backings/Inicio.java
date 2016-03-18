@@ -27,6 +27,6 @@ public class Inicio {
         UUID idOne = UUID.randomUUID();
         String codigo=idOne.toString();
         sesion.setAttribute("idsession", codigo);
-        return "/app/menu.xhtml";
+        return "app/menu.xhtml";
     }
 }

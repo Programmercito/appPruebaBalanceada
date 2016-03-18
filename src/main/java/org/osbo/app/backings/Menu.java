@@ -19,35 +19,48 @@ import javax.servlet.http.HttpSession;
 @ManagedBean(name = "menu")
 public class Menu {
 
-    public String getIdsession() {
-        FacesContext fc = FacesContext.getCurrentInstance();
-        HttpSession sesion = (HttpSession) fc.getExternalContext().getSession(false);
-        String id=sesion.getAttribute("idsession").toString();
+    public String getIdsession() throws Exception {
+        String id;
+        try {
+            FacesContext fc = FacesContext.getCurrentInstance();
+            HttpSession sesion = (HttpSession) fc.getExternalContext().getSession(false);
+            id = sesion.getAttribute("idsession").toString();
+        } catch (Exception Ex) {
+            throw new Exception ("SESSION NO INICIADA !!!");
+        }
         return id;
     }
-    public String getIp(){
+
+    public String getIp() {
         FacesContext fc = FacesContext.getCurrentInstance();
-        HttpServletRequest hs=(HttpServletRequest )fc.getExternalContext().getRequest();
-        String ip=hs.getLocalAddr();
+        HttpServletRequest hs = (HttpServletRequest) fc.getExternalContext().getRequest();
+        String ip = hs.getServerName();
         return ip;
     }
-    public String getPort(){
+
+    public String getPort() {
         FacesContext fc = FacesContext.getCurrentInstance();
-        HttpServletRequest hs=(HttpServletRequest )fc.getExternalContext().getRequest();
-        int port=hs.getLocalPort();
-        String portString=String.valueOf(port);
+        HttpServletRequest hs = (HttpServletRequest) fc.getExternalContext().getRequest();
+        int port = hs.getLocalPort();
+        String portString = String.valueOf(port);
         return portString;
     }
-    public String menu1(){
-        return "/app/menu.xhtml";
+
+    public String menu1() {
+        System.out.println("ENTRANDO A LA OPCION1");
+        return "menu.xhtml";
     }
-    public String menu2(){
-        return "/app/menu2.xhtml";
+
+    public String menu2() {
+        System.out.println("ENTRANDO A LA OPCION2");
+        return "menu2.xhtml";
     }
-    public String cerrar(){
+
+    public String cerrar() {
         FacesContext fc = FacesContext.getCurrentInstance();
         HttpSession sesion = (HttpSession) fc.getExternalContext().getSession(false);
         sesion.invalidate();
+        System.out.println("SALIENDO");
         return "/index.xhtml";
     }
 }
