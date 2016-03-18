@@ -38,4 +38,16 @@ public class Menu {
         String portString=String.valueOf(port);
         return portString;
     }
+    public String menu1(){
+        return "/app/menu.xhtml";
+    }
+    public String menu2(){
+        return "/app/menu2.xhtml";
+    }
+    public String cerrar(){
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpSession sesion = (HttpSession) fc.getExternalContext().getSession(false);
+        sesion.invalidate();
+        return "/index.xhtml";
+    }
 }
