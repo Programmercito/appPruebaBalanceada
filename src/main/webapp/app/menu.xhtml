@@ -1,0 +1,29 @@
+<!DOCTYPE html> 
+<html 
+    xmlns="http://www.w3c.org/1999/xhtml" 
+    xmlns:h="http://xmlns.jcp.org/jsf/html" 
+    xmlns:p="http://primefaces.org/ui"
+    > 
+    <h:head>
+        
+    </h:head> 
+    <h:body> 
+        Aplicacion Balanceada
+        <hr></hr>
+        <h:form>
+            ID:
+            <p:inputText id="idsession" value="#{menu.idsession}" />
+            <br></br>
+            IP:
+            <p:inputText id="ip" value="#{menu.ip}" />
+            <br></br>
+            puerto:
+            <p:inputText id="puerto" value="#{menu.puerto}" />
+
+            <br></br>
+            <p:commandButton id="op1" action="#{inicio.menu1}" value="opcion 1"/>
+            <p:commandButton id="op2" action="#{inicio.menu2}" value="opcion 2"/>
+            <p:commandButton id="cerrar" action="#{inicio.cerrar}" value="Cerrar Sesion"/>
+        </h:form>
+    </h:body> 
+</html>
