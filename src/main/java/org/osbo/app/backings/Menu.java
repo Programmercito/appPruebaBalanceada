@@ -62,5 +62,5 @@ public class Menu {
         sesion.invalidate();
         System.out.println("SALIENDO");
         return "/index.xhtml";
-    }
+    }  
 }

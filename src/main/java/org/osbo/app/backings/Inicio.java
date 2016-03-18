@@ -28,5 +28,5 @@ public class Inicio {
         String codigo=idOne.toString();
         sesion.setAttribute("idsession", codigo);
         return "app/menu.xhtml";
-    }
+    } 
 }
