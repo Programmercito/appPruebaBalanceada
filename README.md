@@ -1,6 +1,9 @@
 # appPruebaBalanceada
 Aplicacion que inicia Session y navega en ella para demostrar que se esta balanceando correctamente entre servidores
-
+Utiliza:
+jsf 2.2
+Primefaces
+y esta hecha para tomcat 8
 
 # Licencia Pública GNU
 
