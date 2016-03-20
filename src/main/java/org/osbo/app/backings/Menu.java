@@ -5,6 +5,10 @@
  */
 package org.osbo.app.backings;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
@@ -32,10 +36,14 @@ public class Menu {
     }
 
     public String getIp() {
-        FacesContext fc = FacesContext.getCurrentInstance();
-        HttpServletRequest hs = (HttpServletRequest) fc.getExternalContext().getRequest();
-        String ip = hs.getLocalAddr();
-        return ip;
+        InetAddress ip=null;
+        try {
+            ip = InetAddress.getLocalHost();
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String ips = ip.toString();
+        return ips;
     }
 
     public String getPort() {
