@@ -21,9 +21,9 @@ import javax.servlet.http.HttpSession;
 @ManagedBean(name = "inicio")
 public class Inicio {
     public String entrar(){
-        System.out.println("entrando");
+        System.out.println("entrando nueva version");
         FacesContext fc=FacesContext.getCurrentInstance();
-        HttpSession sesion=(HttpSession)fc.getExternalContext().getSession(true);
+        HttpSession sesion=(HttpSession)fc.getExternalContext().getSession(false);
         UUID idOne = UUID.randomUUID();
         String codigo=idOne.toString();
         sesion.setAttribute("idsession", codigo);

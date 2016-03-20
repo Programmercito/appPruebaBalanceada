@@ -34,7 +34,7 @@ public class Menu {
     public String getIp() {
         FacesContext fc = FacesContext.getCurrentInstance();
         HttpServletRequest hs = (HttpServletRequest) fc.getExternalContext().getRequest();
-        String ip = hs.getServerName();
+        String ip = hs.getLocalAddr();
         return ip;
     }
 
