@@ -8,20 +8,20 @@
                  
     </h:head> 
     <h:body> 
-        Aplicacion Balanceada Opcion 1..
+        Aplicacion Balanceada Opcion 1..  by @programmercito
         <hr></hr>
         ID:
         <h:inputText id="idsession" value="#{menu.idsession}" />
         <br></br>
         IP:
-        <h:inputText id="ip" value="#{menu.ip}" />
+        <h:inputText id="ip" value="#{menu.ip}" size="100" />
         <br></br>
         puerto:
         <h:inputText id="puerto" value="#{menu.port}" />
 
         <br></br>
         <h:form>
-            <h:commandButton id="op1" action="#{menu.menu1}" value="opcion 1"/>
+            <h:commandButton id="op1" action="#{menu.menu1}" value="opcion 1" />
             <h:commandButton id="op2" action="#{menu.menu2}" value="opcion 2"/>
             <h:commandButton id="cerrar" action="#{menu.cerrar}" value="Cerrar Sesion"/>
         </h:form>
