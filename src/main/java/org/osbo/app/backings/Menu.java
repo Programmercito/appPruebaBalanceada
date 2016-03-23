@@ -18,6 +18,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -90,13 +91,31 @@ public class Menu {
 
     public String cerrar() throws IOException {
         FacesContext fc = FacesContext.getCurrentInstance();
+
+        HttpSession se = (HttpSession) fc.getExternalContext().getSession(false);
+        se.invalidate();
+
+        HttpServletRequest request = (HttpServletRequest) fc.getExternalContext().getRequest();
+        HttpServletResponse response = (HttpServletResponse) fc.getExternalContext().getResponse();
+        Cookie[] cookies = request.getCookies();
+
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                cookie.setValue(null);
+                cookie.setMaxAge(0);
+                cookie.setPath("/appbalanceada/");
+                response.addCookie(cookie);
+            }
+        }
+
         HttpServletResponse hre = (HttpServletResponse) fc.getExternalContext().getResponse();
         hre.sendRedirect("/appbalanceada/faces/index.xhtml");
         fc.responseComplete();
+
+
         /*
         HttpSession sesion = (HttpSession) fc.getExternalContext().getSession(false);
         try {
-            sesion.invalidate();
         } catch (Exception e) {
             System.out.println("no se invalida la session ya que ya esta cerrada");
         }
