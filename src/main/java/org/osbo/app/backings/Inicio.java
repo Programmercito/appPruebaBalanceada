@@ -20,7 +20,9 @@ import javax.servlet.http.HttpSession;
  */
 @ViewScoped
 @ManagedBean(name = "inicio")
-public class Inicio {
+public class Inicio implements java.io.Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     public String entrar() {
         System.out.println("entrando nueva version");

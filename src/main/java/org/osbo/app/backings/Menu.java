@@ -29,7 +29,9 @@ import javax.servlet.http.HttpSession;
  */
 @ViewScoped
 @ManagedBean(name = "menu")
-public class Menu {
+public class Menu implements java.io.Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     public String getIdsession() throws Exception {
         String id;
@@ -93,7 +95,9 @@ public class Menu {
         FacesContext fc = FacesContext.getCurrentInstance();
 
         HttpSession se = (HttpSession) fc.getExternalContext().getSession(false);
-        se.invalidate();
+        if (se != null) {
+            se.invalidate();
+        }
 
         HttpServletRequest request = (HttpServletRequest) fc.getExternalContext().getRequest();
         HttpServletResponse response = (HttpServletResponse) fc.getExternalContext().getResponse();
